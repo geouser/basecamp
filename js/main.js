@@ -41,6 +41,10 @@ jQuery(document).ready(function($) {
     });
 
 
+     $(".scroll").mCustomScrollbar({
+        theme:"minimal-dark"
+     });
+
     /*---------------------------
                                   File input logic
     ---------------------------*/
