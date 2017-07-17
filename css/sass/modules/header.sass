@@ -1,19 +1,15 @@
 .header
 	+position(absolute, 0, 0, auto, 0)
 	+transition(all, .4s)
+	z-index: 100 
 	
-	height: 80px
-	color: #FFF
-	background: rgba(0,0,0,.2)
+	height: 150px
+	background: #ffffff
+	border-bottom: 1px solid #d3d4d9
 	
-	.wrapper
+	.wrapper,
+	.row
 		height: 100%
-
-		& > div:first-of-type
-			text-align: left
-
-		& > div:last-of-type 
-			text-align: right
 
 /* ------------------------------------ */
 /*  NAV STYLES  */
@@ -26,10 +22,9 @@
 			display: inline-block
 			vertical-align: middle
 			margin: 0 10px
-
 			a
-				color: #fff
-				text-transform: uppercase
+				color: $b 
+				
 
 /* ------------------------------------ */
 /*  MENU BUTTON  */
