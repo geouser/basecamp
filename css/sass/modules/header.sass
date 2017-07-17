@@ -7,6 +7,14 @@
 	background: #ffffff
 	border-bottom: 1px solid #d3d4d9
 	
+	@media (max-width: 1600px)
+		height: 120px 
+	@media (max-width: 1400px)
+		height: 100px 
+	
+	.wrapper
+		width: 100%
+		padding: 0 7%  
 	.wrapper,
 	.row
 		height: 100%
@@ -15,15 +23,24 @@
 /*  NAV STYLES  */
 
 .page-menu
+	width: 100% 
 	ul
+		width: 100% 
 		list-style-type: none
+		display: flex
+		justify-content: space-around
 
 		li
 			display: inline-block
 			vertical-align: middle
-			margin: 0 10px
 			a
 				color: $b 
+				padding: 0 8px
+				padding-bottom: 12px
+				border-bottom: 4px solid $g
+				transition: all .2s  
+				&:hover
+					border-color: $b;
 				
 
 /* ------------------------------------ */
