@@ -2,6 +2,10 @@
     +position(absolute, auto, 0, 0, 0)
     +transition(all, .4s)
     z-index: 100 
+    +flex($ai: flex-start)
+    padding: 5px 50px 0
+    font-size: 14px
+    font-weight: 400
     
     height: 110px
     border-top: 1px solid #d3d4d9
@@ -12,3 +16,16 @@
         
     @media (max-width: 1400px)
         height: 60px
+        
+
+    .copyright
+        width: 50%
+    .contacts
+        width: 50%
+        text-align: right
+        
+        a
+            color: inherit
+            
+            &:hover
+                text-decoration: underline
