@@ -30,13 +30,39 @@ jQuery(document).ready(function($) {
     ---------------------------*/
     $(function() { 
         var $document = $(document),
-            $element = $('.menu-button'),
+            $element = $('.toggle-menu'),
             $element2 = $('header'),
             className = 'hasScrolled';
 
         $document.scroll(function() {
             $element.toggleClass(className, $document.scrollTop() >= 1);
             $element2.toggleClass(className, $document.scrollTop() >= 1);
+        });
+    });
+
+
+    /*---------------------------
+                                  File input logic
+    ---------------------------*/
+    $('input[type=file]').each(function(index, el) {
+        $(this).on('change', function(event) {
+            event.preventDefault();
+            var placeholder = $(this).siblings('.placeholder');
+        
+            if ( this.files.length > 0 ) {
+                if ( this.files[0].size < 5000000 ) {
+                    var filename = $(this).val().split('/').pop().split('\\').pop();
+                    if ( filename == '' ) {
+                        filename = placeholder.attr('data-label');
+                    }
+                    placeholder.text(filename);
+                } else {
+                    alert('Maximum file size is 5Mb');
+                }    
+            } else {
+                placeholder.text( placeholder.attr('data-label') );
+            }
+            
         });
     });
     
@@ -53,44 +79,22 @@ jQuery(document).ready(function($) {
     /*---------------------------
                                   MENU TOGGLE
     ---------------------------*/
-    $('.menu-button').on('click', function(event) {
+    $('.js-toggle-menu').on('click', function(event) {
         event.preventDefault();
-        $(this).toggleClass('open');
+        $(this).toggleClass('is-active');
         $(this).siblings('header').toggleClass('open');
-        if ($('header').hasClass('open')) {
-                $('body').css('overflow', 'hidden');
-            } else {
-                $('body').css('overflow', 'visible');
-            }
     });
 
 
 
     /*---------------------------
-                                  Magnific popup
+                                  Fancybox
     ---------------------------*/
-    $('.magnific').magnificPopup({
-        type: 'inline',
-
-        fixedContentPos: false,
-        fixedBgPos: true,
-
-        overflowY: 'auto',
-        modal: false,
-
-        closeBtnInside: true,
-        preloader: false,
+    $('.fancybox').fancybox({
         
-        midClick: true,
-        removalDelay: 300,
-        mainClass: 'my-mfp-slide-bottom'
     });
 
 
-
-    /*----------------------------
-                              SEND FORM
-    -------------------------*/
     /**
      *
      * Open popup
@@ -101,24 +105,23 @@ jQuery(document).ready(function($) {
      *
     */
     function openPopup(popup){
-        $.magnificPopup.open({
-            items: {
-              src: popup
-            },
-            type: 'inline',
-            fixedContentPos: false,
-            fixedBgPos: true,
-            overflowY: 'auto',
-            modal: false,
-            closeBtnInside: true,
-            preloader: false,
-            midClick: true,
-            removalDelay: 300,
-            mainClass: 'my-mfp-slide-bottom'
-        }, 0);
+        $.fancybox.open([
+            {
+                src  : popup,
+                type: 'inline',
+                opts : {}
+            }
+        ], {
+            loop : false
+        });
     }
 
-    $('.form').on('submit', function(event) {
+
+
+    /*---------------------------
+                                  Form submit
+    ---------------------------*/
+    $('.ajax-form').on('submit', function(event) {
         event.preventDefault();
         var data = new FormData(this);
         $(this).find('button').prop('disabled', true);
@@ -149,31 +152,22 @@ jQuery(document).ready(function($) {
 
 
 
-    /*Google map init*/
+    /*---------------------------
+                                  Google map init
+    ---------------------------*/
     var map;
     function googleMap_initialize() {
         var lat = $('#map_canvas').data('lat');
         var long = $('#map_canvas').data('lng');
 
-        var mapCenterCoord = new google.maps.LatLng(lat, long+0.002);
+        var mapCenterCoord = new google.maps.LatLng(lat, long);
         var mapMarkerCoord = new google.maps.LatLng(lat, long);
-        if ( $(window).width() <= 1000 ) {
-            mapCenterCoord = new google.maps.LatLng(lat, long);
-            mapMarkerCoord = new google.maps.LatLng(lat, long);
-        }
-        $(window).resize(function(event) {
-            if ( $(window).width() <= 1000 ) {
-                mapCenterCoord = new google.maps.LatLng(lat, long);
-                mapMarkerCoord = new google.maps.LatLng(lat, long);
-            } else {
-                mapCenterCoord = new google.maps.LatLng(lat, long+0.002);
-                mapMarkerCoord = new google.maps.LatLng(lat, long);
-            }
-        });
+
+        var styles = [];
 
         var mapOptions = {
             center: mapCenterCoord,
-            zoom: 17,
+            zoom: 16,
             //draggable: false,
             disableDefaultUI: true,
             scrollwheel: false,
@@ -181,12 +175,17 @@ jQuery(document).ready(function($) {
         };
 
         map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+
+        var styledMapType=new google.maps.StyledMapType(styles,{name:'Styled'});
+        map.mapTypes.set('Styled',styledMapType);
+        map.setMapTypeId('Styled');
+
         var markerImage = new google.maps.MarkerImage('images/location.png');
         var marker = new google.maps.Marker({
             icon: markerImage,
             position: mapMarkerCoord, 
             map: map,
-            title:"Чисто Строй"
+            title:"Site Title"
         });
         
         $(window).resize(function (){
