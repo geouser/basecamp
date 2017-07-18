@@ -6,7 +6,7 @@ body
     color: $b 
     padding-top: 150px
     padding-bottom: 110px  
-    background-color: $w
+    background-color: $lb
     font-family: 'Avenir'
     font-weight: 300
     color: $b
@@ -19,6 +19,16 @@ body
     @media (max-width: 1400px)
         padding-top: 100px 
         padding-bottom: 60px 
+        font-size: 14px 
+        
+    @media (max-width: 1200px)
+        font-size: 13px 
+        
+    @media (max-width: 750px) 
+        padding-top: 50px 
+        height: auto 
+        padding-bottom: 0 
+        font-size: 16px 
 
 .wrapper
 	width: 1200px 
@@ -35,31 +45,77 @@ body
     display: flex
     flex-direction: column
     justify-content: center 
+    position: relative
+    @media (max-width: 750px) 
+        margin: 35px 0 
+        height: auto 
     &__wrap
         height: 90%
         display: flex
         align-items: flex-start
+        @media (max-width: 1200px)
+            height: 500px 
+            max-height: 98% 
+        @media (max-width: 750px) 
+            display: block
+            height: auto 
+            max-height: 100000% 
         &__img
             background-size: cover
             background-repeat: no-repeat
             background-position: 50% 50%  
             height: 100% 
             width: 62%
+            @media (max-width: 750px) 
+                width: 96% 
+                &:before
+                    display: block
+                    content: ""
+                    padding-top: 40%  
         &__text
             padding: 30px 7% 0 18px 
             width: 38% 
             height: 100% 
+            @media (max-width: 1600px)
+                padding-right: 6
+            @media (max-width: 1400px)
+                padding-right: 4.5% 
+            @media (max-width: 1200px)
+                padding-right: 0 
+                padding-top: 20px
+            @media (max-width: 750px) 
+                width: 100% 
+                padding: 20px 15px 0 
+            h2
+                font-size: 20px
+                line-height: 1.3
+                letter-spacing: .015em
+                margin-bottom: 25px 
+                font-weight: 400    
             p
                 margin-bottom: 20px
                 line-height: 1.3 
                 &:last-child
-                 margin-bottom: 0 
+                    margin-bottom: 0 
+                @media (max-width: 1400px)
+                    margin-bottom: 15px 
+                @media (max-width: 750px)
+                    margin-bottom: 20px 
             .scroll
                 height: calc(100% - 220px)
                 overflow: hidden
                 padding-right: 30px 
+                @media (max-width: 1400px)
+                    height: calc(100% - 170px)
+                @media (max-width: 1200px)
+                    height: calc(100% - 150px)
+                @media (max-width: 750px) 
+                    height: auto
+                    padding-right: 0  
             .page-title
-                transform: translateX(-55%) 
+                transform: translateX(-50%) 
+                @media (max-width: 750px) 
+                    transform: translateY(-60%) 
                  
 
 .page-title
@@ -70,6 +126,23 @@ body
     padding: 25px 20px
     margin-bottom: 35px
     letter-spacing: 0.01em 
+    @media (max-width: 1400px)
+        font-size: 48px 
+        width: 600px 
+        margin-bottom: 25px 
+        padding: 20px 20px
+    @media (max-width: 1200px)
+        font-size: 38px 
+        padding: 14px 
+        width: 480px 
+    @media (max-width: 750px) 
+        width: auto
+        display: inline-block
+        position: absolute
+        top: 0px
+        left: 0
+        font-size: 26px
+        padding: 5px 20px
     &:before
         content: ""
         display: block
@@ -77,10 +150,24 @@ body
         height: 4px
         width: 60px
         background-color: $b   
+        @media (max-width: 1400px)
+            height: 3px 
+            margin-bottom: 14px 
+        @media (max-width: 750px) 
+            height: 2px
+            margin-bottom: 4px  
+            width: 22px 
     &:after
         content: ""
         display: block
         margin-top: 20px
         height: 4px
         width: 60px
-        background-color: $b     
+        background-color: $b    
+        @media (max-width: 1400px)
+            height: 3px 
+            margin-top: 16px 
+        @media (max-width: 750px) 
+            height: 2px
+            margin-top: 2px  
+            width: 22px 

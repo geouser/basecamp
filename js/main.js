@@ -25,60 +25,17 @@ function exist(el){
 
 jQuery(document).ready(function($) {
 
-    /*---------------------------
-                                  ADD CLASS ON SCROLL
-    ---------------------------*/
-    $(function() { 
-        var $document = $(document),
-            $element = $('.toggle-menu'),
-            $element2 = $('header'),
-            className = 'hasScrolled';
-
-        $document.scroll(function() {
-            $element.toggleClass(className, $document.scrollTop() >= 1);
-            $element2.toggleClass(className, $document.scrollTop() >= 1);
-        });
-    });
-
 
      $(".scroll").mCustomScrollbar({
         theme:"minimal-dark"
      });
 
-    /*---------------------------
-                                  File input logic
-    ---------------------------*/
-    $('input[type=file]').each(function(index, el) {
-        $(this).on('change', function(event) {
-            event.preventDefault();
-            var placeholder = $(this).siblings('.placeholder');
-        
-            if ( this.files.length > 0 ) {
-                if ( this.files[0].size < 5000000 ) {
-                    var filename = $(this).val().split('/').pop().split('\\').pop();
-                    if ( filename == '' ) {
-                        filename = placeholder.attr('data-label');
-                    }
-                    placeholder.text(filename);
-                } else {
-                    alert('Maximum file size is 5Mb');
-                }    
-            } else {
-                placeholder.text( placeholder.attr('data-label') );
-            }
-            
-        });
-    });
-    
-    /*---------------------------
-                                PAGE ANCHORS
-    ---------------------------*/
-    $('.mainNav a, .anchor').click(function() {
+     $('.back-to-top').click(function(){
         $('html, body').animate({
-            scrollTop: $($(this).attr('href')).offset().top - 50
+            scrollTop: $('.header').offset().top - 50
         }, 800);
         return false;
-    });
+     });
 
     /*---------------------------
                                   MENU TOGGLE
@@ -86,17 +43,13 @@ jQuery(document).ready(function($) {
     $('.js-toggle-menu').on('click', function(event) {
         event.preventDefault();
         $(this).toggleClass('is-active');
-        $(this).siblings('header').toggleClass('open');
+        $('#mobile-menu').toggleClass('open');
     });
-
-
 
     /*---------------------------
                                   Fancybox
     ---------------------------*/
-    $('.fancybox').fancybox({
-        
-    });
+    $('.fancybox').fancybox({});
 
 
     /**
@@ -152,53 +105,6 @@ jQuery(document).ready(function($) {
                 $(this).find('button').prop('disabled', false);
             });
         });
-    });
-
-
-
-    /*---------------------------
-                                  Google map init
-    ---------------------------*/
-    var map;
-    function googleMap_initialize() {
-        var lat = $('#map_canvas').data('lat');
-        var long = $('#map_canvas').data('lng');
-
-        var mapCenterCoord = new google.maps.LatLng(lat, long);
-        var mapMarkerCoord = new google.maps.LatLng(lat, long);
-
-        var styles = [];
-
-        var mapOptions = {
-            center: mapCenterCoord,
-            zoom: 16,
-            //draggable: false,
-            disableDefaultUI: true,
-            scrollwheel: false,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-
-        map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-
-        var styledMapType=new google.maps.StyledMapType(styles,{name:'Styled'});
-        map.mapTypes.set('Styled',styledMapType);
-        map.setMapTypeId('Styled');
-
-        var markerImage = new google.maps.MarkerImage('images/location.png');
-        var marker = new google.maps.Marker({
-            icon: markerImage,
-            position: mapMarkerCoord, 
-            map: map,
-            title:"Site Title"
-        });
-        
-        $(window).resize(function (){
-            map.setCenter(mapCenterCoord);
-        });
-    }
-
-    if ( exist( '#map_canvas' ) ) {
-        googleMap_initialize();
-    }
+    })
 
 }); // end file

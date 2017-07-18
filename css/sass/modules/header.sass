@@ -11,13 +11,28 @@
 		height: 120px 
 	@media (max-width: 1400px)
 		height: 100px 
+	@media (max-width: 750px) 
+		height: 50px 
+		padding: 10px 0 
+		
 	
 	.wrapper
 		width: 100%
 		padding: 0 10%  
+		@media (max-width: 1300px)
+			padding: 0 7% 
+		@media (max-width: 1200px)
+			padding: 0 2% 
+		@media (max-width: 900px)
+			padding: 0 15px 
 	.wrapper,
 	.row
 		height: 100%
+		& > div[class^="col"]
+			&:first-child
+				padding-right: 0 
+			&:last-of-type
+				padding-left: 0 
 
 /* ------------------------------------ */
 /*  NAV STYLES  */
@@ -35,29 +50,131 @@
 			vertical-align: middle
 			a
 				color: $b 
-				padding: 0 8px
-				padding-bottom: 10px
+				font-weight: 400 
+				padding: 0 2px
+				padding-bottom: 12px
 				border-bottom: 4px solid $g
 				transition: all .2s  
+				letter-spacing: .05em 
+				display: inline-block
 				&:hover
-					border-color: $b;
-				
+					border-color: $b
+				@media (max-width: 1400px)
+					padding-bottom: 8px 
+					border-width: 3px 
+				@media (max-width: 1200px)
+					font-size: 12px
+					padding-bottom: 4px
+					border-width: 2px   
+				@media (max-width: 900px)
+					font-size: 11px
+				@media (max-width: 800px)
+					font-size: 10px 
+					
+	&--left
+		li:first-child
+			margin-right: 12% 
+			@media (max-width: 1740px)
+				margin-right: 0 
+			a
+				padding-right: 6px
+				padding-left: 6px  
+				@media (max-width: 1200px)
+					padding-right: 2px
+					padding-left: 2px  
+	&--right
+		li:last-child
+			margin-left: 7%
+			@media (max-width: 1740px)
+				margin-left: 0%
+			a
+				padding-right: 6px
+				padding-left: 6px 
+				@media (max-width: 1200px)
+					padding-right: 2px
+					padding-left: 2px 
+	
+.mobile-menu
+	display: none
+	position: fixed
+	width: 100%
+	left: 0
+	top: 0
+	padding: 20px
+	z-index: 100 
+	background-color: #f7f7f9 
+	text-align: center
+	transform: translateY(-110%) 
+	transition: .5s ease-in-out
+	&.open
+		transform: translateY(0%) 
+	ul
+		list-style-type: none
+		padding-top: 20px 
+		li
+			display: block
+			margin: 0 0 14px
+			a
+				color: $b 	
+				font-weight: 400 	
+				font-size: 16px 
+				border-bottom: 4px solid $g
+				padding-bottom: 4px 
+				display: inline-block
+			&.active
+				a
+					border-color: $b 
 
+	@media (max-width: 750px)
+		display: block
+
+
+.menu-mob-hid
+	@media (max-width: 750px)
+		display: none
+
+.logo
+	display: inline-block
+	@media (max-width: 750px) 
+		display: block
+		position: absolute
+		left: 0
+		right: 0
+		width: 33px
+		height: 40px 
+		margin: auto
+		top: 0
+		bottom: 0  
+	img
+		display: block
+		max-width: 100%  
+		max-height: 100% 
+		margin: 0 auto
+		@media (max-width: 750px) 
+			height: 40px 
 /* ------------------------------------ */
 /*  MENU BUTTON  */
-
+.hamburger-wrap
+	display: none
+	@media (max-width: 750px)
+		display: block
 .menu-button
-	+position(fixed, 15px, 10px, auto, auto)
-	background: white
+	background: transparent
+	position: fixed
+	left: 13px
+	top: 7px
+	z-index: 110
+	display: none
+	 
 	border-radius: 50%
-	box-shadow: 0 5px 10px rgba(black, 0.5)
 	cursor: pointer
-	-webkit-transform: rotate(0deg)
-	-moz-transform: rotate(0deg)
-	-o-transform: rotate(0deg)
 	transform: rotate(0deg)
-	-webkit-transition: .5s ease-in-out
-	-moz-transition: .5s ease-in-out
-	-o-transition: .5s ease-in-out
 	transition: .5s ease-in-out
 	cursor: pointer
+	@media (max-width: 750px)
+		display: block
+		margin: 0 0 0 auto 
+		
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after
+	@media (max-width: 750px)
+		width: 22px 

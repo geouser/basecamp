@@ -2,6 +2,7 @@
     +position(absolute, auto, 0, 0, 0)
     +transition(all, .4s)
     z-index: 100 
+    padding-top: 12px 
     
     height: 110px
     border-top: 1px solid #d3d4d9
@@ -12,3 +13,46 @@
         
     @media (max-width: 1400px)
         height: 60px
+    @media (max-width: 750px) 
+        position: static
+        padding: 12px 0
+        height: auto  
+        
+    a,
+    span
+        color: $b 
+        display: block
+        font-size: 14px 
+        @media (max-width: 1400px)
+            font-size: 12px 
+        @media (max-width: 750px) 
+            font-size: 14px
+            
+    a
+        margin-bottom: 4px
+        &:last-child
+            margin-bottom: 0 
+    .wrapper 
+        width: 100%
+        padding: 0 2.5%  
+        @media (max-width: 750px) 
+            padding: 0 15px 
+        .row
+            &>div:first-child 
+                text-align: left
+            &>div:last-child 
+                text-align: right
+
+
+.back-to-top
+    background-color: transparent
+    border: none
+    display: block
+    margin-top: 35px  
+    display: none
+    text-align: left
+    border-bottom: 1px solid $b 
+    margin-left: 15px 
+    padding: 0 
+    @media (max-width: 750px) 
+        display: inline-block
