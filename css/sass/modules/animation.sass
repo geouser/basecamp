@@ -15,6 +15,13 @@
 		animation-name: mainscaleout
 		animation-delay: 2.5s
 		animation-fill-mode: forwards
+		
+		@media (max-width: 1200px)
+			font-size: 44px
+			
+
+		@media (max-width: 600px)
+			font-size: 28px
 	
 	.sub-word
 		text-transform: uppercase
@@ -23,6 +30,12 @@
 		animation-name: subfadeout
 		animation-delay: 1s
 		animation-fill-mode: forwards
+		
+		@media (max-width: 1200px)
+			font-size: 26px
+			
+		@media (max-width: 600px)
+			font-size: 18px
 		 
 @keyframes subfadeout
 	to
@@ -45,6 +58,11 @@
 	width: 278px
 	height: 340px
 	opacity: 0
+	
+	@media (max-width: 1200px)
+		width: 140px
+		height: 172px
+		transform: translate(-50%, -160px)
 	
 .layer-2
 	z-index: 2
@@ -70,18 +88,25 @@
 	animation-duration: 4s
 	animation-name: fadingcircles
 	animation-delay: 8s
-	animation-fill-mode: forwards;
+	animation-fill-mode: forwards
 	
 	.letter
 		opacity: 0 
 		animation-duration: 2s
 		animation-name: fadeIn
 		animation-delay: 11s
-		animation-fill-mode: forwards;
+		animation-fill-mode: forwards
 		position: absolute
 		top: 50%
 		left: 50%
 		transform: translate(-50%, -50%)  
+		
+		img
+			display: block
+			width: 100%
+		
+		@media (max-width: 1200px)
+			width: 50px
 
 
 .layer-4
@@ -94,6 +119,17 @@
 	top: 50%
 	left: 50%
 	transform: translate(-50%, 160px)  
+	
+	img
+		display: block
+		width: 100%
+	
+	@media (max-width: 1200px)
+		width: 400px
+		transform: translate(-50%, 40px)  
+		
+	@media (max-width: 600px)
+		width: 280px
 
 @keyframes fadeIn
 	to
@@ -115,6 +151,10 @@
 	top: 0 
 	left: 50%
 	transform: translate(-50%, 0)
+	
+	@media (max-width: 1200px)
+		width: 140px
+		height: 140px
 
 	
 	span
@@ -130,6 +170,11 @@
 		display: block
 		vertical-align: bottom 
 		
+		@media (max-width: 1200px)
+			padding-top: 57px 
+			font-size: 12px
+		
+
 	@for $i from 0 through 10
 		.char-#{$i} 
 			transform: rotate(($i*10+90)+deg)
@@ -154,6 +199,10 @@
 	left: 50%
 	transform: translate(-50%, 0)
 	
+	@media (max-width: 1200px)
+		width: 140px
+		height: 140px
+	
 	span
 		position: absolute
 		width: 10px
@@ -166,6 +215,10 @@
 		height: 142px
 		display: block
 		vertical-align: bottom 
+		
+		@media (max-width: 1200px)
+			height: 70px
+			font-size: 12px
 		
 	@for $i from 0 through 10
 		.char-#{$i} 
@@ -186,6 +239,9 @@
 
 svg
 	width: 278px
+	
+	@media (max-width: 1200px)
+		width: 140px
 	
 	.st0
 		fill: none
