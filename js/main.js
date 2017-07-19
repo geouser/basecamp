@@ -25,10 +25,11 @@ function exist(el){
 
 jQuery(document).ready(function($) {
 
-
-     $(".scroll").mCustomScrollbar({
-        theme:"minimal-dark"
-     });
+    if(!window.params.isMobile) {
+         $(".scroll").mCustomScrollbar({
+            theme:"minimal-dark"
+         });
+    }
 
      $('.back-to-top').click(function(){
         $('html, body').animate({
