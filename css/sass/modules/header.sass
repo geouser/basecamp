@@ -70,6 +70,9 @@
 					font-size: 11px
 				@media (max-width: 800px)
 					font-size: 10px 
+			&.current-menu-item
+				a
+					border-color: $b
 					
 	&--left
 		li:first-child
@@ -121,7 +124,7 @@
 				border-bottom: 4px solid $g
 				padding-bottom: 4px 
 				display: inline-block
-			&.active
+			&.current-menu-item
 				a
 					border-color: $b 
 
@@ -160,7 +163,7 @@
 		display: block
 .menu-button
 	background: transparent
-	position: fixed
+	position: absolute
 	left: 13px
 	top: 7px
 	z-index: 110

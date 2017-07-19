@@ -32,10 +32,11 @@ jQuery(document).ready(function($) {
         }, 1000)
     });
 
-
-     $(".scroll").mCustomScrollbar({
-        theme:"minimal-dark"
-     });
+    if(!window.params.isMobile) {
+         $(".scroll").mCustomScrollbar({
+            theme:"minimal-dark"
+         });
+    }
 
      $('.back-to-top').click(function(){
         $('html, body').animate({
