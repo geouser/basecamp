@@ -25,6 +25,13 @@ function exist(el){
 
 jQuery(document).ready(function($) {
 
+    $('.layer-4').one('webkitAnimationEnd oanimationend msAnimationEnd animationend',   
+        function(e) {
+        setTimeout(function(){
+            $('.loader').addClass('complete');
+        }, 1000)
+    });
+
 
      $(".scroll").mCustomScrollbar({
         theme:"minimal-dark"
