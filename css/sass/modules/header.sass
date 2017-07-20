@@ -59,6 +59,7 @@
 				display: inline-block
 				&:hover
 					border-color: $b
+					color: #828E96
 				@media (max-width: 1400px)
 					padding-bottom: 8px 
 					border-width: 3px 
@@ -72,6 +73,7 @@
 					font-size: 10px 
 			&.current-menu-item
 				a
+					color: #828E96
 					border-color: $b
 					
 	&--left
@@ -138,6 +140,15 @@
 
 .logo
 	display: inline-block
+	-webkit-transition: opacity 0.3s ease 
+	-moz-transition: opacity 0.3s ease 
+	-ms-transition: opacity 0.3s ease 
+	-o-transition: opacity 0.3s ease 
+	transition: opacity 0.3s ease 
+	
+	&:hover
+		opacity: 0.5
+	
 	@media (max-width: 750px) 
 		display: block
 		position: absolute
